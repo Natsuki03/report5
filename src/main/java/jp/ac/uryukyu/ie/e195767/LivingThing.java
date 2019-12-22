@@ -1,5 +1,8 @@
 package jp.ac.uryukyu.ie.e195767;
 
+/**
+ * Heroクラス、Enemyクラスの共通部分をまとめたクラス。
+ */
 public class LivingThing {
     private String name;
     private int hitPoint;
@@ -26,6 +29,12 @@ public class LivingThing {
         this.dead = dead;
     }
 
+    /**
+     * コンストラクタ。名前、最大HP、攻撃力を継承させる
+     * @param name ヒーロー、または敵の名前。
+     * @param maximumHP　ヒーロー、または敵の最大HP
+     * @param attack　ヒーロー、または敵の攻撃力
+     */
     public LivingThing(String name, int maximumHP, int attack){
         this.name = name;
         hitPoint = maximumHP;
@@ -38,14 +47,19 @@ public class LivingThing {
         return dead;
     }
 
-    public String getName(){
+    public String getName(){                     //nameのgetter
         return name;
-    }      //nameのgetter
+    }
 
     public void setName(String name){            //nameのsetter
         this.name = name;
     }
 
+    /**
+     * 攻撃するメソッド。
+     * 相手のHPが0でないなら攻撃する。
+     * @param opponent 敵の情報
+     */
     public void attack(LivingThing opponent){
 
         if(this.dead==false){
@@ -56,6 +70,11 @@ public class LivingThing {
 
     }
 
+    /**
+     * ダメージ計算のメソッド。
+     * HPが0以下になったら死んでいるとみなす。
+     * @param damage ダメージ量
+     */
     public void wounded(int damage){
         hitPoint -= damage;
         if( hitPoint < 0 ) {
